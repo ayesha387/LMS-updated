@@ -16,29 +16,24 @@ import java.util.stream.Collectors;
 public class IssueBookService {
     @Autowired
     private IssueBookRepo issueBookRepo;
-    @Transactional
-    public IssueBookModel saveIssueBook (IssueBookModel issueBookModel)
-    {
-        IssueBook issueBook = null;
+   /* @Transactional
+   public IssueBookModel saveIssueBook (IssueBookModel issueBookModel)
+   {
+       IssueBook issueBook = null;
         if(!ObjectUtils.isEmpty(issueBookModel))
         {
-            issueBook = findExistingIssueBook(issueBookModel);
-            if(ObjectUtils.isEmpty(issueBook))
-            {
-                issueBook = issueBookModel.disassemble();
+            issueBook = issueBookRepo.findExistingIssueBook(issueBookModel);
+           if(ObjectUtils.isEmpty(issueBook))
+           {
+             issueBook = issueBookModel.disassemble();
             }
-            else
-            {
-                issueBook.setId(issueBookModel.getIssueBookId());
+           else
+          {
+               issueBook.setId(issueBookModel.getIssueBookId());
             }
         }
         return new IssueBookModel(issueBookRepo.save(issueBook));
-    }
-
-    private IssueBook findExistingIssueBook(IssueBookModel issueBookModel) {
-
-        return new IssueBook();
-    }
+    }*/
 
     public List<IssueBookModel> findIssueBook(Long issueBookId)
     {

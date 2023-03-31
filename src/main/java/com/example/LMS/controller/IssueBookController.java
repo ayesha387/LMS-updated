@@ -12,11 +12,11 @@ public class IssueBookController {
     @Autowired
     private IssueBookService issueBookService;
 
-    @PostMapping(path = "/saveIssueBook")
+  /*  @PostMapping(path = "/saveIssueBook")
     public IssueBookModel saveIssueBook(@RequestBody IssueBookModel issueBookModel){
         return issueBookService.saveIssueBook(issueBookModel);
     }
-
+*/
     @GetMapping(path = "list")
     public List<IssueBookModel> getIssueBook(@RequestParam(name = "IssueBookId",required = false) Long issueBookId)
 

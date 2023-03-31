@@ -14,5 +14,5 @@ public class Shelf {
     @Column(name = "name")
     private String name;
     @OneToMany(mappedBy = "shelf")
-    private List<Book> bookList;
+    private List<BookShelf> bookShelfList;
 }

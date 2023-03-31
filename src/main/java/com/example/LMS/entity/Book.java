@@ -1,6 +1,10 @@
 package com.example.LMS.entity;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.apache.catalina.LifecycleState;
+
+import java.util.List;
+
 @Entity
 @Table(name = "book")
 @Data
@@ -14,10 +18,9 @@ public class Book {
     @Column(name = "edition")
     private String edition;
     @Column(name = "author")
-    private Integer author;
-    @ManyToOne
-    @JoinColumn(name = "shelf_id")
-    private Shelf shelf;
+    private String author;
+    @OneToMany(mappedBy = "book")
+    private List<BookShelf> bookShelfList;
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
