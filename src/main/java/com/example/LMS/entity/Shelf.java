@@ -2,9 +2,7 @@ package com.example.LMS.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.util.List;
-
 @Entity
 @Table(name = "Shelf")
 @Data

@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IssueBookRepo extends JpaRepository<IssueBook, Long> {
+    IssueBook findIssueBookById(Long IssueBookId);
+
 }

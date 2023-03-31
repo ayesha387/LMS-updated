@@ -3,24 +3,15 @@ package com.example.LMS.model;
 import com.example.LMS.entity.Member;
 import lombok.Data;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalDateTime;
 import java.util.Date;
-
 @Component
 @Data
 public class MemberModel {
-
     private String name;
-
     private Long phoneNo;
-
     private String email;
-
     private String address;
-
     private Date joinDate;
-
     public Member disassemble()
     {
         Member member = new Member();

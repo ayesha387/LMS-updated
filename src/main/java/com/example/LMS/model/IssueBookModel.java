@@ -2,26 +2,25 @@ package com.example.LMS.model;
 
 import com.example.LMS.entity.IssueBook;
 import lombok.Data;
-import org.springframework.stereotype.Component;
-
 import java.util.Date;
-
 @Data
 public class IssueBookModel {
-    private Date issueDate;
-    private Date retrunDate;
+    private Long IssueBookId;
 
-    public IssueBook disassemble() {
-        IssueBook issueBook = new IssueBook();
-        issueBook.setIssueDate(issueDate);
-        issueBook.setReturnDate(retrunDate);
-        return issueBook;
+    public IssueBookModel(IssueBook issueBook)
+    {
+        this.IssueBookId=issueBook.getId();
     }
 
-    public IssueBookModel assemble(IssueBook issueBook) {
-        IssueBookModel issueBookModel = new IssueBookModel();
-        issueBookModel.setIssueDate(issueBook.getIssueDate());
-        issueBookModel.setRetrunDate(issueBook.getReturnDate());
-        return issueBookModel;
+    public IssueBookModel(Long issueBookId)
+    {
+        this.IssueBookId = issueBookId;
+    }
+
+    public IssueBook disassemble()
+    {
+        IssueBook npIssueBook = new IssueBook();
+        npIssueBook.setId(this.getIssueBookId());
+        return npIssueBook;
     }
 }
