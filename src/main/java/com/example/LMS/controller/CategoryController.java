@@ -1,17 +1,41 @@
 package com.example.LMS.controller;
 
-import com.example.LMS.model.CategoryModel;
+import com.example.LMS.entity.Category;
 import com.example.LMS.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 @RestController
+@RequestMapping("/categories")
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
-    @PostMapping("/saveCategory")
-    public CategoryModel saveCategory(@RequestBody CategoryModel categoryModel) {
-        return categoryService.category(categoryModel);
+
+    @GetMapping
+    public List<Category> getAllCategories() {
+        return categoryService.getAllCategories();
+    }
+
+    @GetMapping("/{id}")
+    public Category getCategoryById(@PathVariable Long id) {
+        return categoryService.getCategoryById(id);
+    }
+
+    @PostMapping
+    public Category createCategory(@RequestBody Category category) {
+        return categoryService.saveCategory(category);
+    }
+
+    @PutMapping("/{id}")
+    public Category updateCategory(@PathVariable Long id, @RequestBody Category category) {
+        category.setId(id);
+        return categoryService.saveCategory(category);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCategory(@PathVariable Long id) {
+        categoryService.deleteCategory(id);
     }
 }

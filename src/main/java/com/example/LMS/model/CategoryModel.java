@@ -2,10 +2,11 @@ package com.example.LMS.model;
 
 import com.example.LMS.entity.Category;
 import lombok.Data;
-import org.springframework.stereotype.Component;
-@Component
 @Data
 public class CategoryModel {
+    public CategoryModel() {
+        this.name = name;
+    }
     private String name;
     public Category disassemble() {
         Category category = new Category();

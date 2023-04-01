@@ -1,10 +1,7 @@
 package com.example.LMS.entity;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.apache.catalina.LifecycleState;
-
 import java.util.List;
-
 @Entity
 @Table(name = "book")
 @Data
