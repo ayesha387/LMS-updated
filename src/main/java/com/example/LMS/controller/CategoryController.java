@@ -13,6 +13,11 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    @PostMapping("/categories")
+    public Category createCategory(@RequestBody Category category) {
+        return categoryService.saveCategory(category);
+    }
+
     @GetMapping
     public List<Category> getAllCategories() {
         return categoryService.getAllCategories();
@@ -21,11 +26,6 @@ public class CategoryController {
     @GetMapping("/{id}")
     public Category getCategoryById(@PathVariable Long id) {
         return categoryService.getCategoryById(id);
-    }
-
-    @PostMapping
-    public Category createCategory(@RequestBody Category category) {
-        return categoryService.saveCategory(category);
     }
 
     @PutMapping("/{id}")
