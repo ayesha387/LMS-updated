@@ -1,10 +1,6 @@
 package com.example.LMS.entity;
-
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
-
-import java.util.Date;
 @Entity
 @Table(name = "IssueBook")
 @Data
