@@ -12,8 +12,8 @@ public class MemberModel {
     private String email;
     private String address;
     private Date joinDate;
-    public Member disassemble()
-    {
+
+    public Member disassemble() {
         Member member = new Member();
         member.setName(name);
         member.setPhoneNo(phoneNo);
@@ -22,14 +22,15 @@ public class MemberModel {
         member.setJoinDate(joinDate);
         return member;
     }
-    public MemberModel assemble(Member member)
-    {
+
+    public MemberModel assemble(Member member) {
         MemberModel memberModel = new MemberModel();
         memberModel.setName(member.getName());
         memberModel.setPhoneNo(member.getPhoneNo());
         memberModel.setEmail(member.getEmail());
         memberModel.setAddress(member.getAddress());
-        member.setJoinDate(member.getJoinDate());
+        memberModel.setJoinDate(member.getJoinDate());
         return memberModel;
     }
 }
+

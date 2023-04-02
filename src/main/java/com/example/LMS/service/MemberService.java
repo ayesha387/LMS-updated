@@ -1,16 +1,15 @@
 package com.example.LMS.service;
 
-import com.example.LMS.model.MemberModel;
-import com.example.LMS.repository.MemberRepo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-@Service
-public class MemberService {
-    @Autowired
-    private MemberRepo memberRepo;
+import com.example.LMS.entity.Member;
+import java.util.List;
 
-    public MemberModel member (MemberModel memberModel)
-    {
-        return memberModel.assemble(memberRepo.save(memberModel.disassemble()));
-    }
+public interface MemberService {
+
+    Member save(Member member);
+    List<Member> findAll();
+
+    Member findById(Long id);
+
+    void delete(Long id);
 }
+

@@ -17,9 +17,9 @@ public class IssueBook {
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
-    @ManyToOne
+/*    @ManyToOne
     @JoinColumn(name = "librarian_id")
-    private Librarian librarian;
+    private Librarian librarian;*/
     @OneToOne
     @JoinColumn(name = "book_id")
     private Book book;
