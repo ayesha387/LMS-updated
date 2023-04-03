@@ -1,26 +1,55 @@
 package com.example.LMS.model;
 
 import com.example.LMS.entity.IssueBook;
+import jakarta.persistence.Column;
 import lombok.Data;
+
+import java.time.LocalDate;
 import java.util.Date;
-@Data
 public class IssueBookModel {
-    private Long IssueBookId;
+    private LocalDate issueDate;
+    private LocalDate returnDate;
+    private Long memberId;
+    private Long bookId;
 
-    public IssueBookModel(IssueBook issueBook)
-    {
-        this.IssueBookId=issueBook.getId();
+    public IssueBookModel() {}
+
+    public IssueBookModel(LocalDate issueDate, LocalDate returnDate, Long memberId, Long bookId) {
+        this.issueDate = issueDate;
+        this.returnDate = returnDate;
+        this.memberId = memberId;
+        this.bookId = bookId;
     }
 
-    public IssueBookModel(Long issueBookId)
-    {
-        this.IssueBookId = issueBookId;
+    public LocalDate getIssueDate() {
+        return issueDate;
     }
 
-    public IssueBook disassemble()
-    {
-        IssueBook npIssueBook = new IssueBook();
-        npIssueBook.setId(this.getIssueBookId());
-        return npIssueBook;
+    public void setIssueDate(LocalDate issueDate) {
+        this.issueDate = issueDate;
+    }
+
+    public LocalDate getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(LocalDate returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    public Long getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(Long memberId) {
+        this.memberId = memberId;
+    }
+
+    public Long getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
     }
 }

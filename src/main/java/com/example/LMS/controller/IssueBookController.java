@@ -1,31 +1,45 @@
 package com.example.LMS.controller;
 
+import com.example.LMS.entity.IssueBook;
 import com.example.LMS.model.IssueBookModel;
 import com.example.LMS.service.IssueBookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/issueBooks")
 public class IssueBookController {
     @Autowired
     private IssueBookService issueBookService;
 
-  /*  @PostMapping(path = "/saveIssueBook")
-    public IssueBookModel saveIssueBook(@RequestBody IssueBookModel issueBookModel){
-        return issueBookService.saveIssueBook(issueBookModel);
+    @PostMapping("/issueBook")
+    public ResponseEntity<IssueBook> createIssueBook(@RequestBody IssueBook issueBook) {
+        IssueBook savedIssueBook = issueBookService.save(issueBook);
+        return new ResponseEntity<>(savedIssueBook, HttpStatus.CREATED);
     }
-*/
-    @GetMapping(path = "list")
-    public List<IssueBookModel> getIssueBook(@RequestParam(name = "IssueBookId",required = false) Long issueBookId)
 
-    {
-        return issueBookService.findIssueBook(issueBookId);
+    @GetMapping("/{id}")
+    public ResponseEntity<IssueBook> getIssueBookById(@PathVariable Long id) {
+        IssueBook issueBook = issueBookService.findById(id);
+        if (issueBook == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(issueBook, HttpStatus.OK);
     }
-    @GetMapping(path = "/id/{issueBookId}")
-    public List<IssueBookModel> getIssueBookById(@PathVariable(value = "issueBookId") Long issueBookId)
-    {
-        return issueBookService.findIssueBook(issueBookId);
+
+    @GetMapping("")
+    public ResponseEntity<List<IssueBook>> getAllIssueBooks() {
+        List<IssueBook> issueBooks = issueBookService.findAll();
+        return new ResponseEntity<>(issueBooks, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteIssueBookById(@PathVariable Long id) {
+        issueBookService.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
