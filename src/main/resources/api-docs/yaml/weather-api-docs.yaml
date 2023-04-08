@@ -1,0 +1,67 @@
+openapi: 3.0.0
+info:
+  title: LMS API
+  description: Rest API for SyncLayer Logistic
+  version: 1.0.0
+  contact:
+    email: wadeb@discorp.com
+
+tags:
+  - name: Book
+    description: Endpoints for Book
+  - name: BookShelf
+    description: Endpoints for Lms BookShelf
+
+paths:
+  /book/list:
+    get:
+      tags:
+        - Book
+      summary: Get list of books
+      operationId: bookList
+      parameters:
+        - in: query
+          name: bookId
+          description: Unique reference of book record
+          required: false
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookModel'
+  /book/save:
+    post:
+      tags:
+        - Book
+      summary: Endpoint to save book
+      operationId: bookSave
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookModel'
+      responses:
+        '200':
+          description: Successful book record has been saved or updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookModel'
+
+components:
+
+  schemas:
+    CountryModel:
+      type: object
+      properties:
+        countryId:
+          type: integer
+          format: int64
+        countryName:
+          type: string
+
