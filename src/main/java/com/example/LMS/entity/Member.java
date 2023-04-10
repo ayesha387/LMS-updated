@@ -24,4 +24,6 @@ public class Member {
     private Date joinDate;
     @OneToMany(mappedBy = "member")
     private List<IssueBook> issueBookList;
+
+
 }

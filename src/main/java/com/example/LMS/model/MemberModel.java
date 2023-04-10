@@ -7,6 +7,7 @@ import java.util.Date;
 @Component
 @Data
 public class MemberModel {
+    private Long id;
     private String name;
     private Long phoneNo;
     private String email;
@@ -15,6 +16,7 @@ public class MemberModel {
 
     public Member disassemble() {
         Member member = new Member();
+        member.setId(id);
         member.setName(name);
         member.setPhoneNo(phoneNo);
         member.setEmail(email);
@@ -25,6 +27,7 @@ public class MemberModel {
 
     public MemberModel assemble(Member member) {
         MemberModel memberModel = new MemberModel();
+        memberModel.setId(member.getId());
         memberModel.setName(member.getName());
         memberModel.setPhoneNo(member.getPhoneNo());
         memberModel.setEmail(member.getEmail());

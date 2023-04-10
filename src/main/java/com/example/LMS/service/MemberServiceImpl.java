@@ -1,6 +1,7 @@
 package com.example.LMS.service;
 
 import com.example.LMS.entity.Member;
+import com.example.LMS.model.MemberModel;
 import com.example.LMS.repository.MemberRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,8 +14,8 @@ public class MemberServiceImpl implements MemberService {
     private MemberRepo memberRepo;
 
     @Override
-    public Member save(Member member) {
-        return memberRepo.save(member);
+    public Member save(MemberModel memberModel) {
+        return memberModel.assemble(memberRepo.save(memberModel.disassemble())).disassemble();
     }
 
     @Override

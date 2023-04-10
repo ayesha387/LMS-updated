@@ -5,21 +5,18 @@ import com.example.LMS.model.BookModel;
 import com.example.LMS.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-
 @RestController
 @RequestMapping("/books")
 public class BookController {
     @Autowired
     private BookService bookService;
-
-    @PostMapping("/books")
+    @PostMapping("/save")
     public Book createBook(@RequestBody BookModel bookModel) {
-        Book book = bookModel.disassemble();
-        return bookService.saveBook(book);
+      /*  Book book = bookModel.disassemble();*/
+        return bookService.saveBook(bookModel);
     }
-    @GetMapping("")
+    @GetMapping("/list")
     public List<Book> getAllBooks() {
         return bookService.getAllBooks();
     }
@@ -33,7 +30,7 @@ public class BookController {
         book.setISBN(bookModel.getISBN());
         book.setEdition(bookModel.getEdition());
         book.setAuthor(bookModel.getAuthor());
-        return bookService.saveBook(book);
+        return bookService.saveBook(bookModel);
     }
     @DeleteMapping("/{id}")
     public void deleteBook(@PathVariable Long id) {

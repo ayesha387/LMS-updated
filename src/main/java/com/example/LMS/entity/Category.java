@@ -14,6 +14,9 @@ public class Category {
     private Long id;
     @Column(name = "name")
     private String name;
-    @OneToMany(mappedBy = "category")
+   @OneToMany(mappedBy = "category")
     private List<Book> bookList;
+
+
+
 }

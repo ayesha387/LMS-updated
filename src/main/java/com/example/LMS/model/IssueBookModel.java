@@ -7,6 +7,7 @@ import lombok.Data;
 import java.time.LocalDate;
 import java.util.Date;
 public class IssueBookModel {
+    private Long id;
     private LocalDate issueDate;
     private LocalDate returnDate;
     private Long memberId;

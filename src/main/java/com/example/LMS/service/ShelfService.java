@@ -1,6 +1,7 @@
 package com.example.LMS.service;
 
 import com.example.LMS.entity.Shelf;
+import com.example.LMS.model.ShelfModel;
 import com.example.LMS.repository.ShelfRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,8 +23,8 @@ public class ShelfService {
         }
     }
 
-    public Shelf saveShelf(Shelf shelf) {
-        return shelfRepo.save(shelf);
+    public Shelf saveShelf(ShelfModel shelfModel) {
+        return shelfRepo.save(shelfModel.disassemble());
     }
 
     public void deleteShelfById(Long id) {

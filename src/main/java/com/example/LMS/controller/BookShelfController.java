@@ -1,5 +1,6 @@
 package com.example.LMS.controller;
 import com.example.LMS.entity.BookShelf;
+import com.example.LMS.model.BookShelfModel;
 import com.example.LMS.service.BookShelfService;
 import com.example.LMS.service.BookShelfService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +14,12 @@ public class BookShelfController {
     @Autowired
     private BookShelfService bookshelfService;
 
-    @PostMapping("/bookShelf")
-    public BookShelf saveBookshelf(@RequestBody BookShelf bookShelf) {
-        return bookshelfService.saveBookShelf(bookShelf);
+    @PostMapping("/save")
+    public BookShelf saveBookshelf(@RequestBody BookShelfModel bookShelfModel) {
+        return bookshelfService.saveBookShelf(bookShelfModel);
     }
 
-    @GetMapping
+    @GetMapping("/list")
     public List<BookShelf> getAllBookshelves() {
         return bookshelfService.getAllBookshelves();
     }
